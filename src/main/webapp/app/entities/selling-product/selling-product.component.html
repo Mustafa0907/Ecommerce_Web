@@ -1,0 +1,73 @@
+<div style="    padding: 40px;">
+    <h2 id="page-heading">
+        <span>Selling Products</span>
+
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-selling-product" [routerLink]="['/selling-product/new']">
+            <fa-icon icon="plus"></fa-icon>
+            <span>
+            Create a new Selling Product
+            </span>
+        </button>
+    </h2>
+
+    <jhi-alert-error></jhi-alert-error>
+
+    <jhi-alert></jhi-alert>
+
+    <div class="alert alert-warning" id="no-result" *ngIf="sellingProducts?.length === 0">
+        <span>No sellingProducts found</span>
+    </div>
+
+    <div class="table-responsive" id="entities" *ngIf="sellingProducts?.length > 0">
+        <table class="table table-striped" aria-describedby="page-heading">
+            <thead>
+                <tr>
+                    <th scope="col" ><span>ID</span></th>
+                    <th scope="col" ><span>Createdondate</span></th>
+                    <th scope="col" ><span>Name</span></th>
+                    <th scope="col" ><span>Brand</span></th>
+                    <th scope="col" ><span>Category</span></th>
+                    <th scope="col" ><span>Details</span></th>
+                    <th scope="col" ><span>Expected Price</span></th>
+                    <th scope="col" ><span>Userid</span></th>
+                    <th scope="col"></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let sellingProduct of sellingProducts ;trackBy: trackId">
+                    <td><a [routerLink]="['/selling-product', sellingProduct.id, 'view']">{{ sellingProduct.id }}</a></td>
+                    <td>{{ sellingProduct.createdondate | date:'medium' }}</td>
+                    <td>{{ sellingProduct.name }}</td>
+                    <td>{{ sellingProduct.brand }}</td>
+                    <td>{{ sellingProduct.category }}</td>
+                    <td>{{ sellingProduct.details }}</td>
+                    <td>{{ sellingProduct.expectedPrice }}</td>
+                    <td>{{ sellingProduct.userid }}</td>
+                    <td class="text-right">
+                        <div class="btn-group">
+                            <button type="submit"
+                                    [routerLink]="['/selling-product', sellingProduct.id, 'view']"
+                                    class="btn btn-info btn-sm">
+                                <fa-icon icon="eye"></fa-icon>
+                                <span class="d-none d-md-inline">View</span>
+                            </button>
+
+                            <button type="submit"
+                                    [routerLink]="['/selling-product', sellingProduct.id, 'edit']"
+                                    class="btn btn-primary btn-sm">
+                                <fa-icon icon="pencil-alt"></fa-icon>
+                                <span class="d-none d-md-inline">Edit</span>
+                            </button>
+
+                            <button type="submit" (click)="delete(sellingProduct)"
+                                    class="btn btn-danger btn-sm">
+                                <fa-icon icon="times"></fa-icon>
+                                <span class="d-none d-md-inline">Delete</span>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

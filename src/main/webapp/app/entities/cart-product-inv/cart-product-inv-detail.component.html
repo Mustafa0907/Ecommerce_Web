@@ -1,0 +1,42 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="cartProductInv">
+            <h2><span>Cart Product Inv</span> {{ cartProductInv.id }}</h2>
+
+            <hr>
+
+            <jhi-alert-error></jhi-alert-error>
+
+            <dl class="row-md jh-entity-details">
+                <dt><span>Quantity</span></dt>
+                <dd>
+                    <span>{{ cartProductInv.quantity }}</span>
+                </dd>
+                <dt><span>Product</span></dt>
+                <dd>
+                    <div *ngIf="cartProductInv.product">
+                        <a [routerLink]="['/product', cartProductInv.product?.id, 'view']">{{ cartProductInv.product?.id }}</a>
+                    </div>
+                </dd>
+                <dt><span>Shopping Cart</span></dt>
+                <dd>
+                    <div *ngIf="cartProductInv.shoppingCart">
+                        <a [routerLink]="['/shopping-cart', cartProductInv.shoppingCart?.id, 'view']">{{ cartProductInv.shoppingCart?.id }}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span>Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/cart-product-inv', cartProductInv.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span>Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

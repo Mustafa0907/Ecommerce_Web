@@ -1,0 +1,54 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="product">
+            <h2><span>Product</span> {{ product.id }}</h2>
+
+            <hr>
+
+            <jhi-alert-error></jhi-alert-error>
+
+            <dl class="row-md jh-entity-details">
+                <dt><span>Createdondate</span></dt>
+                <dd>
+                    <span>{{ product.createdondate }}</span>
+                </dd>
+                <dt><span>Name</span></dt>
+                <dd>
+                    <span>{{ product.name }}</span>
+                </dd>
+                <dt><span>Price</span></dt>
+                <dd>
+                    <span>{{ product.price }}</span>
+                </dd>
+                <dt><span>Brand</span></dt>
+                <dd>
+                    <span>{{ product.brand }}</span>
+                </dd>
+                <dt><span>Totalquantity</span></dt>
+                <dd>
+                    <span>{{ product.totalquantity }}</span>
+                </dd>
+                <dt><span>Category</span></dt>
+                <dd>
+                    <span>{{ product.category }}</span>
+                </dd>
+                <dt><span>Specs</span></dt>
+                <dd>
+                    <span>{{ product.specs }}</span>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span>Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/product', product.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span>Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

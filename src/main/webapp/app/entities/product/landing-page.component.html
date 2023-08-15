@@ -1,0 +1,177 @@
+<!-- <nz-alert *ngIf="showAlert"
+  nzType="success"
+  [nzMessage]="alertMessage"
+  nzShowIcon>
+</nz-alert> -->
+
+<ng-template #template>
+  <div class="ant-notification-notice-content">
+    <div class="ant-notification-notice-with-icon">
+      <span class="ant-notification-notice-icon"><i class="fa fa-check" style="color: #00ff2a;"></i></span>
+      <div class="ant-notification-notice-message">Success</div>
+      <div class="ant-notification-notice-description">
+        Item added to cart successfully!
+      </div>
+    </div>
+  </div>
+</ng-template>
+
+<div class="row">
+  <div class="col-lg-12" style="padding: 0px 120px; margin-top: 20px;">
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 carousel-wrapper">
+      <nz-carousel [nzAutoPlay]="true" style="border-radius: 25px;">
+        <div nz-carousel-content *ngFor="let item of arrayOfImgUrls">
+          <img [src]='item' style="max-width: 100%; height: auto;" />
+        </div>
+      </nz-carousel>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-lg-12 col-md-12 col-sm-12 text-center font-family-Fjalla-One"
+    style="font-size: 30px; margin-top: 20px; font-size: 4vw; font-weight: 700;">
+    Products
+  </div>
+  
+  <div class="col-lg-12 col-md-12 col-sm-12 text-center font-family-Fjalla-One">
+    <div class="search-container">
+      <input class="search-input" type="text" [(ngModel)]="name" placeholder="Search by name">
+      <button class="search-button" (click)="search()">Search</button>
+    </div>
+  </div>
+</div>
+
+<div>
+  <div class="col-lg-12 product-list">
+    <div class="row">
+      <div class="container justify-content-center mt-100">
+        <div class="row">
+          <div class="col-md-6 col-lg-4"
+            *ngFor="let product of products | slice:(currentPageIndex-1)*itemsPerPage:currentPageIndex*itemsPerPage">
+            <div class="product-wrapper mb-45 text-center">
+              <div class="product-img">
+                <a [routerLink]="'/product/' + product.id + '/product'" data-abc="true">
+                  <img class="img-hov" [src]="product.images[0]?.imagePath" alt="{{ product.name }} image">
+                </a>
+                <span class="text-center"><i class="fa fa-usd"></i> {{product.price}}</span>
+                <div class="product-action">
+                  <div style="color: white;
+                    font-size: 20px;
+                    width: 70%;
+                    font-weight: 600;
+                    margin-bottom: 70px !important;
+                    margin: auto;">
+                    {{ product.name }}
+                  </div>
+                  <div class="product-action-style">
+                    <button nz-tooltip nzTooltipTitle="Add to Cart" (click)="addToCart(product.id, 1, template)">
+                      <i class="fa fa-plus"></i>
+                    </button>
+                    <a [routerLink]="'/product/' + product.id + '/product'" nz-tooltip nzTooltipTitle="View Product">
+                      <i class="fa fa-shopping-cart"></i>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-12 text-center">
+            <nz-pagination [(nzPageIndex)]="currentPageIndex" [nzTotal]="products.length"
+              [nzPageSize]="itemsPerPage"></nz-pagination>
+            <!-- <nz-pagination [(nzPageIndex)]="pagination.page" [nzTotal]="products2.length" [nzPageSize]="pagination.size" (nzPageIndexChange)="changePage($event)"></nz-pagination> -->
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+<!-- <div>
+    <div class="col-lg-12">
+        <div class="row">
+            <div class="container justify-content-center mt-100">
+                <div class="row">
+                    <div class="col-md-3" *ngFor="let product of products | slice:(currentPageIndex-1)*itemsPerPage:currentPageIndex*itemsPerPage">
+                        <div class="product-wrapper mb-45 text-center">
+                            <div class="product-img">
+                                <a href="#" data-abc="true">
+                                    <img [src]="product.images[0]?.imagePath" alt="{{ product.name }} image">
+                                </a>
+                                <span class="text-center"><i class="fa fa-usd"></i> {{product.price}}</span>
+                                <div class="product-action">
+                                    <div class="product-action-style">
+                                        <button nz-tooltip nzTooltipTitle="Add to Cart"
+                                            (click)="addToCart(product.id, 1, template)"> <i class="fa fa-plus"></i>
+                                        </button>
+                                        <a [routerLink]="'/product/' + product.id + '/product'" nz-tooltip
+                                            nzTooltipTitle="View Product"> <i class="fa fa-shopping-cart"></i> </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-12 text-center">
+                        <nz-pagination [(nzPageIndex)]="currentPageIndex" [nzTotal]="products.length" [nzPageSize]="itemsPerPage"></nz-pagination>
+                      </div>
+
+
+
+                    <!-- <div class="col-md-3">
+                        <div class="product-wrapper mb-45 text-center">
+                            <div class="product-img"> <a href="#" data-abc="true"> <img
+                                        src="../../../content/images/S21-3.jpg" alt=""> </a> <span><i
+                                        class="fa fa-usd"></i> 41,000</span>
+                                <div class="product-action">
+                                    <div class="product-action-style"> <a class="action-plus" title="Quick View"
+                                            data-toggle="modal" data-target="#exampleModal" href="#" data-abc="true"> <i
+                                                class="fa fa-plus"></i> </a><a
+                                            class="action-cart" title="Add To Cart" href="#" data-abc="true"> <i
+                                                class="fa fa-shopping-cart"></i> </a> </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="product-wrapper mb-45 text-center">
+                            <div class="product-img"> <a href="#" data-abc="true"> <img
+                                        src="https://images.pexels.com/photos/13780425/pexels-photo-13780425.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt=""> </a> <span><i
+                                        class="fa fa-usd"></i> 33,000</span>
+                                <div class="product-action">
+                                    <div class="product-action-style"> <a class="action-plus" title="Quick View"
+                                            data-toggle="modal" data-target="#exampleModal" href="#" data-abc="true"> <i
+                                                class="fa fa-plus"></i> </a> <a class="action-heart" title="Wishlist"
+                                            href="#" data-abc="true"> <i class="fa fa-heart"></i> </a> <a
+                                            class="action-cart" title="Add To Cart" href="#" data-abc="true"> <i
+                                                class="fa fa-shopping-cart"></i> </a> </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="product-wrapper mb-45 text-center">
+                            <div class="product-img"> <a href="#" data-abc="true"> <img
+                                        src="https://images.pexels.com/photos/11772521/pexels-photo-11772521.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt=""> </a> <span><i
+                                        class="fa fa-usd"></i> 23,000</span>
+                                <div class="product-action">
+                                    <div class="product-action-style"> <a class="action-plus" title="Quick View"
+                                            data-toggle="modal" data-target="#exampleModal" href="#" data-abc="true"> <i
+                                                class="fa fa-plus"></i> </a> <a class="action-heart" title="Wishlist"
+                                            href="#" data-abc="true"> <i class="fa fa-heart"></i> </a> <a
+                                            class="action-cart" title="Add To Cart" href="#" data-abc="true"> <i
+                                                class="fa fa-shopping-cart"></i> </a> </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div> -->
+<!-- </div>
+            </div>
+        </div>
+    </div>
+</div> --> -->

@@ -1,0 +1,71 @@
+/* import Bootstrap variables if needed */
+@import '~bootstrap/scss/functions';
+@import '~bootstrap/scss/variables';
+
+.navbar {
+    padding: 0.5rem 1rem;
+}
+
+.navbar-brand {
+    color: #fff;
+    transition: color 0.3s ease;
+}
+
+.navbar-brand:hover {
+    color: #ddd;
+}
+
+.nav-item {
+    margin: 0 0.5rem;
+}
+
+.nav-link {
+    color: #fff;
+    transition: color 0.3s ease;
+    position: relative;
+}
+
+.nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: #fff;
+    transition: width 0.3s ease;
+}
+
+.nav-link:hover {
+    color: #ddd;
+}
+
+.nav-link:hover::after {
+    width: 100%;
+}
+
+.navbar-toggler {
+    border: none;
+}
+
+.fa-icon {
+    color: #fff;
+    transition: color 0.3s ease;
+}
+
+.fa-icon:hover {
+    color: #ddd;
+}
+
+.logo-img {
+    height: 45px;
+    width: 45px;
+    display: inline-block;
+    vertical-align: middle;
+    background: url('../../../content/images/logo-white.png') no-repeat center center;
+    background-size: contain;
+}
+
+.navbar-title {
+    color: white;
+}

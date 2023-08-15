@@ -1,0 +1,91 @@
+entity Product {
+  createdondate ZonedDateTime,
+  name String,
+  price Double,
+  brand String,
+  totalquantity Integer,
+  category String,
+  specs String,
+  
+}
+
+entity OrderItem {
+    createdondate ZonedDateTime,
+    quantity Integer,
+}
+
+entity SellingProduct {
+  createdondate ZonedDateTime,
+  name String,
+  brand String,
+  category String,
+  details String,
+  expectedPrice String,
+  userid Long
+}
+
+entity CartProductInv {
+  quantity Integer,
+}
+
+entity Images{
+	imagePath String
+}
+
+entity ShoppingCart {
+  createdondate ZonedDateTime,
+  userid Long,
+} 
+
+
+
+entity PurchaseOrder {
+  createdondate ZonedDateTime,
+  status String,
+  total Double,
+  paymentMethod String,
+  userid Long,
+}
+
+
+entity Payment {
+  createdondate ZonedDateTime,
+  amount Double,
+  status String,
+  userid Long,
+}
+
+entity Review {
+  createdondate ZonedDateTime,
+  rating Integer,
+  reviewText String,
+  userid Long
+}
+
+relationship ManyToOne {
+    OrderItem{product} to Product,
+    OrderItem{purchaseOrder} to PurchaseOrder
+}
+relationship OneToOne {
+  PurchaseOrder{payment} to Payment
+}
+
+relationship ManyToOne {
+  PurchaseOrder{shoppingCart} to ShoppingCart
+}
+
+
+relationship OneToMany {
+	Product{Images} to Images
+}
+
+relationship ManyToOne {
+  Review{product} to Product
+}
+relationship ManyToOne {
+  CartProductInv{product} to Product
+}
+
+relationship ManyToOne {
+  CartProductInv{shoppingCart} to ShoppingCart
+}

@@ -1,0 +1,39 @@
+{
+  "generator-jhipster": {
+    "promptValues": {
+      "packageName": "webdev"
+    },
+    "jhipsterVersion": "6.8.0",
+    "applicationType": "monolith",
+    "baseName": "Ecommerce_WebApp",
+    "packageName": "webdev",
+    "packageFolder": "webdev",
+    "serverPort": "8080",
+    "authenticationType": "jwt",
+    "cacheProvider": "no",
+    "websocket": false,
+    "databaseType": "sql",
+    "devDatabaseType": "postgresql",
+    "prodDatabaseType": "postgresql",
+    "searchEngine": false,
+    "messageBroker": false,
+    "serviceDiscoveryType": false,
+    "buildTool": "maven",
+    "enableSwaggerCodegen": false,
+    "jwtSecretKey": "YzE0MTAyM2M3MzgxYjhmNWFkYmJmMmI3MmY2NjU1MDA5NTIxZGY1ZWQzN2I1NjI0ZDdiMDY0NTAxMWNkMGFmN2M4ZDQxOGY5ZTM2MzNmMjcxNDg2NGYzNTQzNjEwMzc1OGMwZGQ0MGI5YjM2YmNmYjI3ZmU0OWNjNDEyY2I5OTY=",
+    "embeddableLaunchScript": false,
+    "useSass": true,
+    "clientPackageManager": "npm",
+    "clientFramework": "angularX",
+    "clientTheme": "none",
+    "clientThemeVariant": "",
+    "creationTimestamp": 1681741367921,
+    "testFrameworks": [],
+    "jhiPrefix": "jhi",
+    "entitySuffix": "",
+    "dtoSuffix": "DTO",
+    "otherModules": [],
+    "enableTranslation": false,
+    "blueprints": []
+  }
+}
